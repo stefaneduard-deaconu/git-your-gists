@@ -1,0 +1,44 @@
+/*customised display for the required data:*/
+
+.gist {
+    border: 1px solid grey;
+    width: 50vw;
+    margin-top: 5vw;
+    padding: 1vw;
+}
+
+.gist .header .gistName {
+    border-bottom: 1px solid black;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+}
+
+/*Requirement 2*/
+
+.gist .header .fileTypes .languages{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    gap: 5px;
+}
+.gist .header .fileTypes .languages img {
+    max-width: 42px;
+    max-height: 42px;
+}
+
+/*Requirement 3 - forks*/
+
+.gist .header .forks {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    gap: 5px;
+}
+.gist .header .forks img {
+    max-width: 42px;
+    max-height: 42px;
+}
+
+/*Requirement 4 - gist contents:*/

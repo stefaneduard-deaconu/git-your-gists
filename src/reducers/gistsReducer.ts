@@ -17,8 +17,6 @@ export type ActionLoadInterrupt = {
     type: 'LOAD_INTERRUPT'
 }
 
-export type Gist = {}
-
 export type GistsState = {
     username: string
     isLoading: boolean,

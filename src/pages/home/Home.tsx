@@ -7,7 +7,7 @@ import {Octokit} from "@octokit/core";
 import gistsReducer, {defaultUserState} from "../../reducers/gistsReducer";
 
 // Octokit.js
-import {GITHUB_PAT} from "../../config";
+import {GITHUB_PAT} from "../../config/private";
 import SearchBar from "./SearchBar";
 import GistBrowser from "./GistBrowser";
 

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import {GistsAction, GistsState} from "../../reducers/gistsReducer";
 
@@ -7,7 +7,11 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from './GistBrowser.module.css'
 import gistImg from '../../media/svg/gist.svg'
 import {Octokit} from "@octokit/core";
-import {GITHUB_PAT} from "../../config";
+
+import {GITHUB_PAT} from "../../config/private";
+import {languageIconTable} from "../../config/public";
+import {log} from "util";
+import GistItem from "./GistItem";
 
 
 export type PropsType = {
@@ -18,6 +22,7 @@ export type PropsType = {
 const octokit = new Octokit({
     auth: GITHUB_PAT
 })
+
 
 const GistBrowser = ({appState, dispatch}: PropsType) => {
 
@@ -65,9 +70,21 @@ const GistBrowser = ({appState, dispatch}: PropsType) => {
                                     </>
 
                                 ) : (
-                                    <pre>
-                                    {JSON.stringify(appState.userGists, null, 4)}
-                                        </pre>
+                                    <>
+                                        {
+                                            appState?.userGists?.map(
+                                                (gist, index) => <GistItem
+                                                    octokit={octokit}
+                                                    key={index}
+                                                    gist={gist}
+                                                />
+                                            )
+                                        }
+
+                                        {/*    <pre>*/}
+                                        {/*     {JSON.stringify(appState.userGists, null, 4)}*/}
+                                        {/*    </pre>*/}
+                                    </>
                                 )
                             }
                         </div>

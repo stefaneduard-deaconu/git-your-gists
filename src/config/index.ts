@@ -1,1 +1,0 @@
-export const GITHUB_PAT = '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';
