@@ -42,7 +42,7 @@ nav > a:visited { /* on click */
 }
 
 nav > a:hover {
-    padding: calc(.4rem - 1px);
+    padding-bottom: calc(.4rem - 2px); /* solved the shaky nav link */
     border: 0 dotted var(--primary);
     border-bottom-width: 2px;
 
