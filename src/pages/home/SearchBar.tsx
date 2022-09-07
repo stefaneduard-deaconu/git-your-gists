@@ -5,7 +5,7 @@ import {GistsAction, GistsState} from "../../reducers/gistsReducer";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from './SearchBar.module.css'
-import  './SearchBar.css' // globals
+import './SearchBar.css' // globals
 
 
 export type PropsType = {
@@ -35,24 +35,18 @@ const SearchBar = ({appState, dispatch}: PropsType) => {
                 <label htmlFor="username">Username</label>
                 <input name={'username'} type="text"
                        onChange={updateUsername}
+                       placeholder={'username..'}
                 />
             </div>
 
             {
-                !appState.isLoading ? (
-                    <button type={"button"}
-                            className={styles.btn}
-                            onClick={loadGists}
-                    >
-                        Load Gists
-                    </button>
-                ) : (
-                    <button type={"button"}
-                            className={`${styles.btnLoading} ${styles.btn}`}
-                    >
-                        <LoadingSpinner size={24}/>
-                    </button>
-                )
+                <button type={"button"}
+                        className={styles.btn}
+                        onClick={loadGists}
+                >
+                    Load Gists
+                </button>
+
             }
 
         </form>

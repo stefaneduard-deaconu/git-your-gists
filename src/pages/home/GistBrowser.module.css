@@ -1,0 +1,23 @@
+.gistBrowser {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.gistBrowser .gistState {
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.gistBrowser .gistState h1 {
+    font-size: 3rem;
+
+}
+
+.gistBrowser .gistState img {
+    width: 5vw;
+}

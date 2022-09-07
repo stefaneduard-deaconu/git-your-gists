@@ -13,6 +13,9 @@ export type ActionLoadedUserGists = {
     type: 'LOADED_USER_GISTS',
     payload: Gist[]
 }
+export type ActionLoadInterrupt = {
+    type: 'LOAD_INTERRUPT'
+}
 
 export type Gist = {}
 
@@ -20,7 +23,7 @@ export type GistsState = {
     username: string
     isLoading: boolean,
     loadError?: string,
-    usersGists?: Gist[]
+    userGists?: Gist[]
 }
 export const defaultUserState = {
     username: '',
@@ -32,6 +35,7 @@ export type GistsAction =
     | ActionLoadUserGists
     | ActionLoadedUserGists
     | ActionLoadError
+    | ActionLoadInterrupt
 
 export default function gistsReducer(state: GistsState, action: GistsAction): GistsState {
     switch (action.type) {
@@ -40,9 +44,9 @@ export default function gistsReducer(state: GistsState, action: GistsAction): Gi
         case 'LOAD_USER_GISTS':
             return {...state, isLoading: true};
         case 'LOAD_ERROR':
-            return {...state, usersGists: [], loadError: action.payload, isLoading: false}
+            return {...state, userGists: [], loadError: action.payload, isLoading: false}
         case 'LOADED_USER_GISTS':
-            return {...state, usersGists: action.payload, isLoading: false}
+            return {...state, userGists: action.payload, isLoading: false}
         default:
             return state;
     }

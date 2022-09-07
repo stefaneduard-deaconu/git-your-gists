@@ -12,6 +12,7 @@ const Footer = () => {
                 <ul>
                     <li><a href="https://www.flaticon.com/free-icons/notepad" title="notepad icons">Notepad icons
                         created by Smashicons - Flaticon</a></li>
+                    <li><a href="https://iconscout.com/icons/gist" target="_blank">Gist Icon</a> on <a href="https://iconscout.com">IconScout</a></li>
                 </ul>
             </div>
             <div className={styles.column}>
