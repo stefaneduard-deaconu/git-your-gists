@@ -1,0 +1,26 @@
+
+.footer {
+    background: var(--light);
+
+    display: flex;
+    justify-content: space-evenly;
+    gap: 3vw;
+    flex-wrap: wrap;
+}
+
+.footer:before {
+    content: '';
+    display: block;
+    border: 1px solid var(--primary);
+    width: 94vw;
+}
+
+.footer > .headline {
+    font-size: 1.3rem;
+    text-align: center;
+    width: 100vw;
+}
+
+.footer > .column > ul {
+    list-style-type: none;
+}

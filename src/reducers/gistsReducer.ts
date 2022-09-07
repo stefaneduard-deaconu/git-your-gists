@@ -16,7 +16,7 @@ export type ActionLoadedUserGists = {
 
 export type Gist = {}
 
-export type UserState = {
+export type GistsState = {
     username: string
     isLoading: boolean,
     loadError?: string,
@@ -27,13 +27,13 @@ export const defaultUserState = {
     isLoading: false
 }
 
-export type UserAction =
+export type GistsAction =
     | ActionChangeUsername
     | ActionLoadUserGists
     | ActionLoadedUserGists
     | ActionLoadError
 
-export default function gistsReducer(state: UserState, action: UserAction): UserState {
+export default function gistsReducer(state: GistsState, action: GistsAction): GistsState {
     switch (action.type) {
         case 'UPDATE_USERNAME':
             return {...state, username: action.payload};

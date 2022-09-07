@@ -1,0 +1,9 @@
+
+.spinner {
+    min-width: 1rem;
+    min-height: 1rem;
+
+    fill: red;
+    color: red;
+}
+
