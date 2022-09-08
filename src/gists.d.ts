@@ -25,6 +25,7 @@ type Fork = {
     owner: {
         login: string, // github username
         avatar_url: string, // link to user's avatar or profile picture
+        url: string // link to the user's gist profile
     }
 }
 

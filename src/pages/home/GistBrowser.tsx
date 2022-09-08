@@ -37,7 +37,7 @@ const GistBrowser = ({appState, dispatch}: PropsType) => {
                     username: appState.username
                 })
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                     // dispatch for type LOADED_USER_GISTS if everything worked just fine
                     dispatch({
                         type: 'LOADED_USER_GISTS',
@@ -70,12 +70,17 @@ const GistBrowser = ({appState, dispatch}: PropsType) => {
                                     </>
 
                                 ) : (
-                                    <>
+                                    <div key={0}>
+                                        {
+                                            appState?.userGists?.length > 0 &&
+                                            <div>User <b>{appState.username}</b> has {appState?.userGists?.length} public
+                                                gists</div>
+                                        }
                                         {
                                             appState?.userGists?.map(
                                                 (gist, index) => <GistItem
                                                     octokit={octokit}
-                                                    key={index}
+                                                    keyIndex={index + 1}
                                                     gist={gist}
                                                 />
                                             )
@@ -84,7 +89,7 @@ const GistBrowser = ({appState, dispatch}: PropsType) => {
                                         {/*    <pre>*/}
                                         {/*     {JSON.stringify(appState.userGists, null, 4)}*/}
                                         {/*    </pre>*/}
-                                    </>
+                                    </div>
                                 )
                             }
                         </div>

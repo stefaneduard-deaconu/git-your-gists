@@ -15,13 +15,14 @@
 
 /*Requirement 2*/
 
-.gist .header .fileTypes .languages{
+.gist .header .fileTypes .languages {
     display: flex;
     align-items: center;
     justify-items: center;
 
     gap: 5px;
 }
+
 .gist .header .fileTypes .languages img {
     max-width: 42px;
     max-height: 42px;
@@ -42,3 +43,12 @@
 }
 
 /*Requirement 4 - gist contents:*/
+
+.gist .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+.gist .content .code {
+    border: 1px solid var(--primary);
+}
