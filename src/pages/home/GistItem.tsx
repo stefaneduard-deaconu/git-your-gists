@@ -5,7 +5,8 @@ import styles from './GistItem.module.css'
 import {Octokit} from "@octokit/core";
 
 
-const loadFileAt = async (file: GistFile, index: number) => {
+// because a gist has multiple files, we have a function which reads them one by one
+const loadFile = async (file: GistFile) => {
     // console.log(index, '->', file.raw_url)
     return new Promise<GistFile>((resolve, reject) => {
         fetch(file.raw_url)
@@ -22,20 +23,20 @@ const loadFileAt = async (file: GistFile, index: number) => {
 
 const readContentForAllFiles = async (oldFiles: GistFile[]) => {
 
-    return new Promise<GistFile[]>(async (res, rej) => {
+    return new Promise<GistFile[]>(async (resolve, reject) => {
         let newFiles = oldFiles;
 
         let i = 0;
         for (const file of oldFiles) {
 
-            let newFile = await loadFileAt(file, i);
+            let newFile = await loadFile(file);
             if (newFile) {
                 newFiles[i].fileContent = newFile?.fileContent;
             }
             i++;
         }
 
-        return newFiles;
+        resolve(newFiles);
     })
 
 
@@ -51,11 +52,13 @@ const GistItem = ({keyIndex, octokit, gist}: IProps) => {
 
     let username = gist.owner?.login;
 
+    // for multiple requirements, we need the files and filenames
     let gistFiles = (Object.values(gist?.files) as GistFile[])
     let filenames = gistFiles?.map(
         (file) => file.filename
     )
 
+    // displayed in the gist
     let firstFilename = filenames?.length > 0 ? filenames[0] : '[NO FILES ATTACHED]';
 
     // SOLVED for requirements Filetypes:
@@ -87,14 +90,12 @@ const GistItem = ({keyIndex, octokit, gist}: IProps) => {
     }, [gist.forks_url])
 
     // SOLVE THE LAST requirement -> expand the content of the gist file on click
-    // BONUS TODO for myself: also list comments..
 
     const [expanded, setExpanded] = useState(false);
     const [files, setFiles] = useState(gistFiles)
     const [hasReadFiles, setHasReadFiles] = useState(false)
 
-
-
+    // also for last requirements, using the async functions for loading the file contents
     useEffect(() => {
             if (!hasReadFiles) {
                 let i = 0;
