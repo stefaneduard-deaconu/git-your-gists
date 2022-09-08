@@ -77,5 +77,9 @@ which requirement is solved by which code fragments;
 
 
 
+## Future improvements?
 
-
+* A gist contains more than just files, the comments could also be loaded and diplayed.
+* The use of multiple reducers is necessary for adding new uses, such as listing users, data about forks, and especially comments to be able to add your own comment
+* Storing the data, because the API usage is limited even when you are authenticated
+* Having the option of using no GitHub PAT, or adding one (but this would be risky without a backend, because it should be crypted. not recommended)
